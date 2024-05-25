@@ -91,7 +91,7 @@ $vmobject | Stop-VM
 Write-Host "Configuring GPU-P for VM"
 $vmobject | Add-VMGpuPartitionAdapter -InstancePath "$path"
 $vmobject | Set-VMGpuPartitionAdapter -MinPartitionVRAM 80000000 -MaxPartitionVRAM 100000000 -OptimalPartitionVRAM 100000000 -MinPartitionEncode 80000000 -MaxPartitionEncode 100000000 -OptimalPartitionEncode 100000000 -MinPartitionDecode 80000000 -MaxPartitionDecode 100000000 -OptimalPartitionDecode 100000000 -MinPartitionCompute 80000000 -MaxPartitionCompute 100000000 -OptimalPartitionCompute 100000000
-$vmobject | Set-VM -GuestControlledCacheTypes $true -LowMemoryMappedIoSpace 1Gb ¨CHighMemoryMappedIoSpace 32GB 
+$vmobject | Set-VM -GuestControlledCacheTypes $true -LowMemoryMappedIoSpace 1Gb -HighMemoryMappedIoSpace 32GB 
 Write-host "Done"
 if ($scriptWritten) {
     Write-Host "Don't forget to run GPUPAdditionalSetup.bat in system drive as administrator for additional setup. This may enable video codec and alternative graphics/compute APIs."
